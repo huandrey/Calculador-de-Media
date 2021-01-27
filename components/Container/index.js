@@ -50,7 +50,18 @@ export default class Container extends Component {
             condition: false,
         })
 
-        if (media >= 7 && media <= 10) {
+        if (media >= 4) {
+            const smallMediaFinal = this.calcSmallMedia(media);
+            const bigMediaFinal = this.calcBigMedia(media);
+
+
+            this.setState({
+                smallMediaFinal,
+                bigMediaFinal,
+                condition: true,
+            })
+            return
+        } else if (media >= 7 && media <= 10) {
             this.setState({
                 aprove: true,
             })
@@ -66,9 +77,6 @@ export default class Container extends Component {
             })
             return
         }
-
-
-
 
     }
 
