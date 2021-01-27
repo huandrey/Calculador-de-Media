@@ -1,0 +1,21 @@
+.cont {
+
+    width: 400px;
+    min-height: 150px;
+
+    margin: 0 auto;
+    margin-top: 120px;
+
+    padding: 18px;
+}
+
+.titule {
+    font-size: 22px; 
+    padding: 10px; 
+    padding-left: 18px;  
+}
+
+.description {
+    font-size: 16px;
+    padding: 18px;
+}
