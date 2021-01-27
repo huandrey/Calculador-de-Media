@@ -25,7 +25,7 @@ export default class Container extends Component {
         media: '',
         bigMediaFinal: '',
         smallMediaFinal: '',
-        note: '',
+        note: 0,
         condition: false
     }
 
