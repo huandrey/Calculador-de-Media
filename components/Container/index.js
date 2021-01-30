@@ -48,12 +48,12 @@ export default class Container extends Component {
             aprove: false,
             reprove: false,
             condition: false,
+            erro: false,
         })
 
-        if (media >= 4) {
+        if (media >= 4 && media < 7) {
             const smallMediaFinal = this.calcSmallMedia(media);
             const bigMediaFinal = this.calcBigMedia(media);
-
 
             this.setState({
                 smallMediaFinal,
