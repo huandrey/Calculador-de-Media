@@ -105,7 +105,7 @@ export default class Container extends Component {
     handleKeyPress = (e) => {
         if (e.charCode === 13) {
             // e.preventDefault()
-            this.handleClick()
+            this.handleClick(e)
         }
         setTimeout(() => {
             if (e.charCode < 46 || e.charCode > 57) {
