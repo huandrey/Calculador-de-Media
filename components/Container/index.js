@@ -1,7 +1,7 @@
 // import React, { Component } from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './Container.module.css'
+import './Container.module.css';
 
 // // import container from './Container.module.css'
 // import Field from '../Field';
@@ -22,102 +22,98 @@ import Results from '../Results';
 
 export default class Container extends Component {
     state = {
-        media: '',
-        bigMediaFinal: 0,
-        smallMediaFinal: 0,
-        note: 0,
-        condition: false,
-        aprove: false,
-        reprove: false,
-        erro: false,
+      media: '',
+      bigMediaFinal: 0,
+      smallMediaFinal: 0,
+      note: 0,
+      condition: false,
+      aprove: false,
+      reprove: false,
+      erro: false,
     }
 
     handleInput = (e) => {
-        console.log(e.code)
-        this.setState({
-            media: e.target.value
-        })
+      this.setState({
+        media: e.target.value,
+      });
     }
 
     handleClick = (e) => {
-        e.preventDefault()
+      e.preventDefault();
 
-        const { media } = this.state;
+      const { media } = this.state;
+
+      this.setState({
+        aprove: false,
+        reprove: false,
+        condition: false,
+        erro: false,
+      });
+
+      if (media >= 4 && media < 7) {
+        const smallMediaFinal = this.calcSmallMedia(media);
+        const bigMediaFinal = this.calcBigMedia(media);
 
         this.setState({
-            aprove: false,
-            reprove: false,
-            condition: false,
-            erro: false,
-        })
-
-        if (media >= 4 && media < 7) {
-            const smallMediaFinal = this.calcSmallMedia(media);
-            const bigMediaFinal = this.calcBigMedia(media);
-
-            this.setState({
-                smallMediaFinal,
-                bigMediaFinal,
-                condition: true,
-            })
-            return
-        } else if (media >= 7 && media <= 10) {
-            this.setState({
-                aprove: true,
-            })
-            return
-        } else if (media < 4) {
-            this.setState({
-                reprove: true,
-            })
-            return
-        } else {
-            this.setState({
-                erro: true,
-            })
-            return
-        }
-
+          smallMediaFinal,
+          bigMediaFinal,
+          condition: true,
+        });
+      } else if (media >= 7 && media <= 10) {
+        this.setState({
+          aprove: true,
+        });
+      } else if (media < 4) {
+        this.setState({
+          reprove: true,
+        });
+      } else {
+        this.setState({
+          erro: true,
+        });
+      }
     }
 
     calcBigMedia = (media) => {
-        const bigMediaFinal = (media * 6 + 40) / 10
+      const bigMediaFinal = (media * 6 + 40) / 10;
 
-        return bigMediaFinal
+      return bigMediaFinal;
     }
 
     calcSmallMedia = (media) => {
-        const note = this.calcSmallNote(media);
-        const smallMediaFinal = (media * 6 + note * 4) / 10
+      const note = this.calcSmallNote(media);
+      const smallMediaFinal = (media * 6 + note * 4) / 10;
 
-        this.setState({
-            note,
-        })
+      this.setState({
+        note,
+      });
 
-        return smallMediaFinal
+      return smallMediaFinal;
     }
 
     calcSmallNote = (media) => {
-        const smallNote = ((50 - 6 * media) / 4) + 0.05
-        return smallNote
+      const smallNote = ((50 - 6 * media) / 4) + 0.05;
+      return smallNote;
     }
 
     handleKeyPress = (e) => {
-        if (e.charCode === 13) {
-            // e.preventDefault()
-            this.handleClick(e)
+      if (e.charCode === 13) {
+        // e.preventDefault()
+        this.handleClick(e);
+      }
+      setTimeout(() => {
+        if (e.charCode < 46 || e.charCode > 57) {
+          e.target.value = '';
         }
-        setTimeout(() => {
-            if (e.charCode < 46 || e.charCode > 57) {
-                e.target.value = ''
-            }
-        }, .1)
+      }, 0.1);
     }
 
     render() {
-        const { media, bigMediaFinal, smallMediaFinal, note, condition, aprove, reprove, erro } = this.state;
+      const {
+        media, bigMediaFinal, smallMediaFinal, note, condition, aprove, reprove, erro,
+      } = this.state;
 
-        return (
+      return (
             <div>
                 <div className="cont p-2 my-8 rounded">
                     <Toast>
@@ -126,24 +122,24 @@ export default class Container extends Component {
                             Saiba o quanto voce precisa tirar na final sem precisar de tabela
                         </ToastBody>
                         <Field
-                            handleInput={this.handleInput}
-                            handleClick={this.handleClick}
-                            media={media}
-                            handleKeyPress={this.handleKeyPress}
+                          handleInput={this.handleInput}
+                          handleClick={this.handleClick}
+                          media={media}
+                          handleKeyPress={this.handleKeyPress}
                         />
 
                     </Toast>
                     <Results
-                        note={note}
-                        bigMediaFinal={bigMediaFinal}
-                        smallMediaFinal={smallMediaFinal}
-                        condition={condition}
-                        aprove={aprove}
-                        reprove={reprove}
-                        erro={erro}
+                      note={note}
+                      bigMediaFinal={bigMediaFinal}
+                      smallMediaFinal={smallMediaFinal}
+                      condition={condition}
+                      aprove={aprove}
+                      reprove={reprove}
+                      erro={erro}
                     />
                 </div>
-            </div >
-        );
+            </div>
+      );
     }
-};
+}

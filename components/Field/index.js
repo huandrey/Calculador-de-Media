@@ -1,17 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import './Field.module.css'
+import './Field.module.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
-import { VscSmiley } from "react-icons/vsc";
+import {
+  Form, FormGroup, Input, Button,
+} from 'reactstrap';
+import { VscSmiley } from 'react-icons/vsc';
 
-export default function Field({ handleInput, handleClick, media, handleKeyPress }) {
-    return (
-        // <div className="fields">
-        //     <input type="text" name="media1"></input>
-        //     <Button color="btn btn-primary mb-3">Adicionar</Button>
-        // </div>
+export default function Field({
+  handleInput, handleClick, media, handleKeyPress,
+}) {
+  return (
+  // <div className="fields">
+  //     <input type="text" name="media1"></input>
+  //     <Button color="btn btn-primary mb-3">Adicionar</Button>
+  // </div>
 
         <Form className="form">
             <FormGroup className="tam">
@@ -21,6 +25,5 @@ export default function Field({ handleInput, handleClick, media, handleKeyPress 
                 <VscSmiley size={20} />
             </FormGroup>
         </Form>
-    )
-
+  );
 }

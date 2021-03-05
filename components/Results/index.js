@@ -1,16 +1,18 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 
-import './Results.module.css'
+import './Results.module.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Alert } from 'reactstrap';
 
-const Results = ({ bigMediaFinal, smallMediaFinal, note, condition, aprove, reprove, erro }) => {
-    const [visible, setVisible] = useState(true);
+const Results = ({
+  bigMediaFinal, smallMediaFinal, note, condition, aprove, reprove, erro,
+}) => {
+  const [visible, setVisible] = useState(true);
 
-    const onDismiss = () => setVisible(false);
+  const onDismiss = () => setVisible(false);
 
-    return (
+  return (
         <>
             <Alert className="alert" color="info" isOpen={aprove} toggle={onDismiss}>
                 Você já passou, parabéns!
@@ -29,9 +31,8 @@ const Results = ({ bigMediaFinal, smallMediaFinal, note, condition, aprove, repr
                 Digite uma média entre 0 e 10
             </Alert>
         </>
-    )
-
-}
+  );
+};
 
 export default Results;
 
